@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sidheswar12/Algorithms.git']]])
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'make'
+            }
+        }
+        stage('Run') {
+            steps {
+                sh './build/findstring'
+            }
+        }
+    }
+}
+
