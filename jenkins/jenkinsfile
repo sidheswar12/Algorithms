@@ -17,6 +17,11 @@ pipeline {
                 sh './build/findstring'
             }
         }
+	stage('status') {
+            steps {
+                echo 'Build Successed'
+            }
+        }
     }
 }
 
